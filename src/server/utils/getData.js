@@ -1,10 +1,10 @@
-import { authenticatedLndGrpc, getIdentity } from 'lightning'
+import { authenticatedLndGrpc, getIdentity, getNetworkGraph } from 'lightning'
 import { createRequire } from 'module'
 import path from 'path'
 
 const require = createRequire(import.meta.url)
 
-const isCached = true // @TODO
+const isCached = false // @TODO
 
 export const getData = async (cert, macaroon, socket) => {
 	if (isCached) {
