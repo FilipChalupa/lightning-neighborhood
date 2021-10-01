@@ -9,4 +9,23 @@ html {
 
 body {
 	font-family: sans-serif;
+	margin: 0;
+}
+
+.layout {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}
+.layout__header,
+.layout__footer {
+	padding: 1em;
+	text-align: center;
+}
+.layout__main {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.graph {
+	min-height: 100%;
 }
