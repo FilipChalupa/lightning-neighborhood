@@ -2,7 +2,8 @@
 	"name": "lightning-neighborhood",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "src/index.js",
+	"type": "module",
 	"scripts": {
 		"start": "node src/index.js"
 	},
@@ -10,6 +11,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"dotenv": "^10.0.0",
 		"lightning": "^4.9.0"
 	}
 }
