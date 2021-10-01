@@ -1,18 +1,21 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import http from 'http'
-import { authenticatedLndGrpc } from 'lightning'
 import { WebSocketServer } from 'ws'
+import { createGraph } from './utils/createGraph.js'
+import { getData } from './utils/getData.js'
 
 dotenv.config()
 
 const { CERT, READONLY_MACAROON, SOCKET, PORT } = process.env
 
-const { lnd } = authenticatedLndGrpc({
-	cert: CERT,
-	macaroon: READONLY_MACAROON,
-	socket: SOCKET,
-})
+const { identity, channels, nodes } = await getData(
+	CERT,
+	READONLY_MACAROON,
+	SOCKET,
+)
+
+const graph = createGraph(identity, channels, nodes, 1)
 
 const app = express()
 const server = http.createServer(app)
@@ -24,7 +27,9 @@ server.listen(PORT, () => {
 	console.log(`Server started on port ${server.address().port}`)
 })
 
-// const { channels, nodes } = await getNetworkGraph({ lnd })
+wss.on('connection', (ws) => {
+	ws.send(JSON.stringify(graph))
+})
 
 // console.log(channels)
 // console.log('--------------')
