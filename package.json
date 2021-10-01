@@ -5,13 +5,19 @@
 	"main": "src/index.js",
 	"type": "module",
 	"scripts": {
-		"start": "node src/index.js"
+		"start": "node src/index.js",
+		"dev": "nodemon src/index.js"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"dotenv": "^10.0.0",
-		"lightning": "^4.9.0"
+		"express": "^4.17.1",
+		"lightning": "^4.9.0",
+		"ws": "^8.2.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.13"
 	}
 }
