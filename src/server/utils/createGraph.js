@@ -39,7 +39,9 @@ export const createGraph = (identity, channels, nodes, depth) => {
 
 	// Add aliases
 	for (const id in graph) {
-		graph[id].alias = nodes.find((node) => node.public_key === id)?.alias ?? id
+		const node = nodes.find((node) => node.public_key === id)
+		graph[id].alias = node?.alias ?? id
+		graph[id].color = node?.color
 	}
 	return Object.values(graph)
 }

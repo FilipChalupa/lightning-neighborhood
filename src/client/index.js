@@ -16,6 +16,7 @@ ws.onmessage = (message) => {
 			group: 'nodes',
 			data: {
 				id: node.id,
+				color: node.color,
 				alias: node.alias,
 				...(i === 0
 					? {
@@ -53,7 +54,7 @@ ws.onmessage = (message) => {
 					label: 'data(alias)',
 					'text-valign': 'center',
 					color: '#000000',
-					'background-color': '#3a7ecf',
+					'background-color': 'data(color)',
 				},
 			},
 
